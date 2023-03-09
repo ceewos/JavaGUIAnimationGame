@@ -34,22 +34,22 @@ public class Movable {
         int[] coords = {this.x, this.y};
         return coords ;
     }
-    public void scrollLeftRight(){
+    public void scrollLeftRight(){// 0 
         if(outOfScreen()){
             this.x = (int) dimension.getWidth();
         }
         this.x -= speed; 
     }
-    public void scrollUpDown(){
+    public void scrollUpDown(){ // 1
         if(outOfScreen()){
             
         }
         this.y += speed;
 
     }
-    public void scrollDownUp(){
+    public void scrollDownUp(){ //2
         if(outOfScreen()){
-            
+            this.y = (int) dimension.getHeight();
         }
         this.y -= speed; 
     }
