@@ -1,6 +1,5 @@
 import java.awt.*;
 public class Candy extends Drawable{
-    private int movementDirection = 1; // Top to Bottom
     private boolean moving = false;
     public Candy( String skin, int speed){
         super(skin, speed);
@@ -25,7 +24,8 @@ public class Candy extends Drawable{
     }
     @Override
     public void setMovement(){
-        setPos ( new Movable(40,40,getSpeed() ,movementDirection,getD(),getSize()));
+        setPos ( new Movable(40,40,getSpeed() , 1 ,getD(),getSize()));
+        //movementDirection = 1 -> up to down
     }
 
     public boolean moving() {

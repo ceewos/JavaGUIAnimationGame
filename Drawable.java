@@ -32,10 +32,7 @@ public abstract class Drawable{
         setMovement();
 
     }
-    public Drawable(Dimension d){
-        this.d = d;
-    }
-
+    
     public void newDrawable(int movementDirection){ // reWrite image
         Random rand = new Random(); 
         if(this.sizeRange != null){
