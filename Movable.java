@@ -7,7 +7,8 @@ public class Movable {
     int maxSize;
     Dimension dimension;
     String[] movements = {"scrollLeftRight","scrollUpDown","scrollDownUp"};
-    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d){  // for candy 
+    //Constructor used by candy
+    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d){ 
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -15,7 +16,8 @@ public class Movable {
         this.movementTypeIndx = movementTypeIndx;
         this.maxSize = 0;
     }
-    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d, int maxSize){ //for fishes 
+    //Constructor used by fishes
+    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d, int maxSize){ 
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -34,6 +36,10 @@ public class Movable {
         int[] coords = {this.x, this.y};
         return coords ;
     }
+    //set coordinates to move based on entered moving pattern 0,1,2
+    // 0: fishes move left -> right
+    // 1: candy moves up -> down
+    // 2: bubbles move down -> up
     public void scrollLeftRight(){// 0 
         if(outOfScreen()){
             this.x = (int) dimension.getWidth();
@@ -53,7 +59,7 @@ public class Movable {
         }
         this.y -= speed; 
     }
-
+    //detects if coordinates have gone out of viewing range
     public boolean outOfScreen(){
         if(this.x < 0 - maxSize || this.y > dimension.getHeight() + maxSize || this. x > dimension.getWidth() + maxSize|| this.y < 0 - maxSize ){
             return true;
@@ -61,7 +67,4 @@ public class Movable {
         return false;
     }
     
-    //bubbles move down to up
-    //fishes move right to left
-    //candy moves up to down
 }

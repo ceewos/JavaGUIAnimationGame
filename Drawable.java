@@ -1,16 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
-import java.util.random.*;
 public abstract class Drawable{
     private int speed;
     private int size;
-    private Image skin;
-    private Movable pos; // contains x,y coordinates and speed 
+    private Image skin; 
+    private Movable pos; //contains x,y coordinates,speed and next coordinates for movement 
     private Dimension d;
     private int[] speedRange;
     private int[] sizeRange;
     private String[] validSkins = {};
+    //drawable constructor used by fish
     public Drawable(int[] speedRange, int[] sizeRange, String[] validSkins, int movementDirection){
         this.d = new Dimension(600,700);
         this.speedRange = speedRange;
@@ -18,22 +18,24 @@ public abstract class Drawable{
         this.validSkins = validSkins;
         newDrawable(movementDirection);
     }
+    //drawable constructor used by Bubble
     public Drawable(int[] speedRange, int[] sizeRange, int movementDirection){
         this.d = new Dimension(600,700);
         this.speedRange = speedRange;
         this.sizeRange = sizeRange;
         newDrawable(movementDirection);
     }
+    //drawable constructor used by Candy
     public Drawable(String skin, int speed){
         this.speed = speed;
         this.d = new Dimension(600,700);
         this.skin = new ImageIcon( "res/feedfish/"+skin ).getImage();
         this.size =this.skin.getWidth(null);
         setMovement();
-
     }
     
-    public void newDrawable(int movementDirection){ // reWrite image
+    public void newDrawable(int movementDirection){ 
+        //re-pick and or re-size image 
         Random rand = new Random(); 
         if(this.sizeRange != null){
             this.size = rand.nextInt(sizeRange[0] , sizeRange[1]);
@@ -43,13 +45,12 @@ public abstract class Drawable{
         if(validSkins.length > 0){
             this.skin = new ImageIcon( "res/feedfish/"+validSkins[ rand.nextInt(0,validSkins.length )] ).getImage();
         }
-
         setMovement();
     }
 
     public abstract void setMovement();
     public abstract void draw(Graphics g);    
-    //---------GET---SET-----------
+    //-----------------------------------------------GETTERS/SETTERS---------------------------------------------------
     public int getSpeed() {
         return speed;
     }
@@ -93,7 +94,5 @@ public abstract class Drawable{
     public void setSizeRange(int[] sizeRange) {
         this.sizeRange = sizeRange;
     }
-
-    
 
 }

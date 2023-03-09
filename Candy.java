@@ -11,13 +11,15 @@ public class Candy extends Drawable{
     @Override
     public void draw(Graphics g){
         if(!moving){
+            //if the user hasnt pressed the screen then keep candy still
             drawStill(g);
         }else{
+            //if candy fell out of screen then reset moving back to still
             if(getPos().outOfScreen()){ 
                 newDrawable(1);
                 this.moving = false;
             }
-           
+            //making candy fall down
             int[] xy = getPos().move();
             g.drawImage(getSkin(), xy[0], xy[1], null);
         }
@@ -27,7 +29,6 @@ public class Candy extends Drawable{
         setPos ( new Movable(40,40,getSpeed() , 1 ,getD(),getSize()));
         //movementDirection = 1 -> up to down
     }
-
     public boolean moving() {
         return moving;
     }
