@@ -3,6 +3,7 @@ import java.awt.*;
 import java.util.Random;
 import java.util.random.*;
 public abstract class Drawable{
+    private int speed;
     private int size;
     private Image skin;
     private Movable pos; // contains x,y coordinates and speed 
@@ -23,24 +24,41 @@ public abstract class Drawable{
         this.sizeRange = sizeRange;
         newDrawable(movementDirection);
     }
-    
+    public Drawable(String skin, int speed){
+        this.speed = speed;
+        this.d = new Dimension(600,700);
+        this.skin = new ImageIcon( "res/feedfish/"+skin ).getImage();
+        this.size =this.skin.getWidth(null);
+        setMovement();
+
+    }
     public Drawable(Dimension d){
         this.d = d;
     }
 
     public void newDrawable(int movementDirection){ // reWrite image
         Random rand = new Random(); 
-        this.size = rand.nextInt(sizeRange[0] , sizeRange[1]);
+        if(this.sizeRange != null){
+            this.size = rand.nextInt(sizeRange[0] , sizeRange[1]);
+        }else{
+            this.size = 20;
+        }
         if(validSkins.length > 0){
             this.skin = new ImageIcon( "res/feedfish/"+validSkins[ rand.nextInt(0,validSkins.length )] ).getImage();
         }
+
         setMovement();
     }
 
     public abstract void setMovement();
-    public abstract void draw(Graphics g);
-    
+    public abstract void draw(Graphics g);    
     //---------GET---SET-----------
+    public int getSpeed() {
+        return speed;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
     public int getSize() {
         return size;
     }

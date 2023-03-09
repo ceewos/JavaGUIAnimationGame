@@ -42,7 +42,7 @@ public class Movable {
     }
     public void scrollUpDown(){ // 1
         if(outOfScreen()){
-            
+            this.y = 40;
         }
         this.y += speed;
 
