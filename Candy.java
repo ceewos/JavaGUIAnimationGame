@@ -1,6 +1,7 @@
 import java.awt.*;
 public class Candy extends Drawable{
     private boolean moving = false;
+    private int score = 0;
     public Candy( String skin, int speed){
         super(skin, speed);
     }
@@ -10,6 +11,8 @@ public class Candy extends Drawable{
     }
     @Override
     public void draw(Graphics g){
+        g.setColor(Color.WHITE);
+        g.drawString("Score: "+score, getPos().dimension.width-70, 20);
         if(!moving){
             //if the user hasnt pressed the screen then keep candy still
             drawStill(g);
@@ -34,5 +37,12 @@ public class Candy extends Drawable{
     }
     public void setMoving(boolean moving) {
         this.moving = moving;
+    }
+
+    public int getScore(){
+        return this.score;
+    }
+    public void increaseScore(){
+        score++;
     }
 }

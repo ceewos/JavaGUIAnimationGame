@@ -12,7 +12,6 @@ public class Main extends AnimationNoApplet { //Main works as controller
     private ArrayList<Bubble> bubbles = new ArrayList<>();
     private Candy candy;
     private Image backImage;
-    private int score = 0;
 
     public Main(String[] args) {
         super(args);
@@ -24,7 +23,7 @@ public class Main extends AnimationNoApplet { //Main works as controller
         String[] validFishSkin = { "fish1.png", "fish2.png", "fish3.png", "fish4.png" };
         //Range of bubble Speeds and Sizes
         int[] bubbleSpeedRange = {18,29};
-        int[] bubbleSizeRange = {4,10};
+        int[] bubbleSizeRange = {2,8};
         //Background Image 
         backImage = new ImageIcon("res/feedfish/background.png").getImage();
 
@@ -64,12 +63,8 @@ public class Main extends AnimationNoApplet { //Main works as controller
             bubble.draw(g);
         }
 
-        g.setColor(Color.WHITE);
-        g.drawString("Score: "+score, getWidth()-70, 20);
-
         for(Fish fish : fishes){
             if( fish.checkCollision()){
-                score++;
                 play("res/feedfish/woohoo.wav");
             }
             fish.draw(g);

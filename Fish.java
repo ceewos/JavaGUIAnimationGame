@@ -10,8 +10,10 @@ public class Fish extends Drawable{
     @Override
     public void draw(Graphics g){
         if( checkCollision()){
-            //if candy collides with fish make fish go down
+            //if candy collides with fish, make fish go down
             collisionMovement();
+            //increase a score in candy to keep track of how many fish candy has hit
+            candy.increaseScore();
         }
         if(getPos().outOfScreen()){ 
             //if fish is out of visible range, then remake fish skin, size, and speed, and place at a random position in the bottom right half of the screen
