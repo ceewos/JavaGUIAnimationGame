@@ -28,7 +28,7 @@ public class Fish extends Drawable{
         int size = getSize();
         //check if the candy collided with self
         //make sure to not count self as collision if already collided and falling ( getPos().movementTypeIndx != 1 )
-        if(candy.getPos().y >= y && candy.getPos().y <= y+size-1 && getPos().movementTypeIndx != 1 ){ 
+        if(candy.getPos().y  >= y && candy.getPos().y <= y+size-1 && getPos().movementTypeIndx != 1 ){ 
             if(candy.getPos().x >= x && candy.getPos().x <= x+size-1){
                 return true;
             }
@@ -42,13 +42,13 @@ public class Fish extends Drawable{
         Random rand = new Random();
         int y = rand.nextInt( (int) getD().getHeight()/2 , (int) getD().getHeight() - 70 );
         int speed = rand.nextInt(getSpeedRange()[0] , getSpeedRange()[1]);
-        setPos ( new Movable(600,y,speed ,movementDirection,getD(),getSizeRange()[1]));
+        setPos ( new Move(600,y,speed ,movementDirection,getD(),getSizeRange()[1]));
     }
     ///set Collison movement
     public void collisionMovement(){
         int speed = candy.getSpeed() - 10;
         //movement type index changes from current position to right into current position to down
-        setPos ( new Movable(getPos().x,getPos().y,speed ,1,getD(),getSizeRange()[1]));
+        setPos ( new Move(getPos().x,getPos().y,speed ,1,getD(),getSizeRange()[1]));
     }
     
 }

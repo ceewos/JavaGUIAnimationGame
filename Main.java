@@ -12,7 +12,6 @@ public class Main extends AnimationNoApplet { //Main works as controller
     private ArrayList<Bubble> bubbles = new ArrayList<>();
     private Candy candy;
     private Image backImage;
-
     public Main(String[] args) {
         super(args);
         int candySpeed = 35;

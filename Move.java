@@ -1,5 +1,5 @@
 import java.awt.Dimension;
-public class Movable {
+public class Move {
     int x;
     int y;
     int speed;
@@ -8,7 +8,7 @@ public class Movable {
     Dimension dimension;
     String[] movements = {"scrollLeftRight","scrollUpDown","scrollDownUp"};
     //Constructor used by candy
-    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d){ 
+    public Move(int x, int y, int speed, int movementTypeIndx, Dimension d){ 
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -17,7 +17,7 @@ public class Movable {
         this.maxSize = 0;
     }
     //Constructor used by fishes
-    public Movable(int x, int y, int speed, int movementTypeIndx, Dimension d, int maxSize){ 
+    public Move(int x, int y, int speed, int movementTypeIndx, Dimension d, int maxSize){ 
         this.x = x;
         this.y = y;
         this.speed = speed;

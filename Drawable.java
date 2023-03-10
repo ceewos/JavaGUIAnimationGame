@@ -5,7 +5,7 @@ public abstract class Drawable{
     private int speed;
     private int size;
     private Image skin; 
-    private Movable pos; //contains x,y coordinates,speed and next coordinates for movement 
+    private Move pos; // position, contains x,y coordinates,speed and next coordinates for movement // Movable
     private Dimension d;
     private int[] speedRange;
     private int[] sizeRange;
@@ -70,10 +70,10 @@ public abstract class Drawable{
     public void setSkin(Image skin) {
         this.skin = skin;
     }
-    public Movable getPos() {
+    public Move getPos() {
         return pos;
     }
-    public void setPos(Movable pos) {
+    public void setPos(Move pos) {
         this.pos = pos;
     }
     public Dimension getD() {

@@ -20,7 +20,7 @@ public class Bubble extends Drawable{
         Random rand = new Random();
         int x = rand.nextInt( 0,(int) getD().getWidth() );
         int speed = rand.nextInt(getSpeedRange()[0] , getSpeedRange()[1]);
-        setPos ( new Movable(x,getD().height, speed ,movementDirection, getD(),getSizeRange()[1]));
+        setPos ( new Move(x,getD().height, speed ,movementDirection, getD(),getSizeRange()[1]));
     }
 
 }
