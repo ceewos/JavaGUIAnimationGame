@@ -39,8 +39,6 @@ public abstract class Drawable{
         Random rand = new Random(); 
         if(this.sizeRange != null){
             this.size = rand.nextInt(sizeRange[0] , sizeRange[1]);
-        }else{
-            this.size = 20;
         }
         if(validSkins.length > 0){
             this.skin = new ImageIcon( "res/feedfish/"+validSkins[ rand.nextInt(0,validSkins.length )] ).getImage();

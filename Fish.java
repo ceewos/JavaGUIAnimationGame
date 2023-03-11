@@ -3,6 +3,7 @@ import java.util.Random;
 public class Fish extends Drawable{
     private int movementDirection = 0; // left to right
     private Candy candy;
+    private int width;
     public Fish(int[] speedRange, int[] sizeRange, String[] validSkins, Candy candy){
         super( speedRange ,sizeRange, validSkins, 0);
         this.candy = candy;
@@ -20,16 +21,21 @@ public class Fish extends Drawable{
             newDrawable(movementDirection);
         }
         int[] xy = getPos().move();
-        g.drawImage(getSkin(), xy[0], xy[1], getSize() + getSize()/3, getSize(),null);
+        g.drawImage(getSkin(), xy[0], xy[1], this.width, getSize(),null);
     }
     public boolean checkCollision(){
+        //fish
         int x = getPos().x;
         int y = getPos().y;
         int size = getSize();
-        //check if the candy collided with self
+        //candy
+        int candySize = candy.getSize();
+        int xCandy = candy.getPos().x + candySize/2;
+        int yCandy = candy.getPos().y + candySize/2;
+        //check if the candy collided with fish
         //make sure to not count self as collision if already collided and falling ( getPos().movementTypeIndx != 1 )
-        if(candy.getPos().y  >= y && candy.getPos().y <= y+size-1 && getPos().movementTypeIndx != 1 ){ 
-            if(candy.getPos().x >= x && candy.getPos().x <= x+size-1){
+        if(yCandy >= y && yCandy <= y+size && getPos().movementTypeIndx != 1 ){ 
+            if(xCandy >= x && xCandy  <= x+width){
                 return true;
             }
         }
@@ -42,6 +48,7 @@ public class Fish extends Drawable{
         Random rand = new Random();
         int y = rand.nextInt( (int) getD().getHeight()/2 , (int) getD().getHeight() - 70 );
         int speed = rand.nextInt(getSpeedRange()[0] , getSpeedRange()[1]);
+        this.width = (int) ( getSize() + getSize()/1.6) ;
         setPos ( new Move(600,y,speed ,movementDirection,getD(),getSizeRange()[1]));
     }
     ///set Collison movement

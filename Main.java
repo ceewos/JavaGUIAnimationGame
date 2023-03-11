@@ -18,7 +18,7 @@ public class Main extends AnimationNoApplet { //Main works as controller
         candy = new Candy("candy.png",candySpeed);
         //Range of Fish Speeds,Sizes and types
         int[] fishSpeedRange = {8,17};
-        int[] fishSizeRange = {50,80};
+        int[] fishSizeRange = {38,80};
         String[] validFishSkin = { "fish1.png", "fish2.png", "fish3.png", "fish4.png" };
         //Range of bubble Speeds and Sizes
         int[] bubbleSpeedRange = {18,29};
